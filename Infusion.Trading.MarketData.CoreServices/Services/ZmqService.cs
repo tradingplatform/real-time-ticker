@@ -15,12 +15,14 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
         private readonly IQuoteService primitiveQuoteService;
         private readonly List<string> subscribedTickerList;
         private readonly NetMQContext socketFactory;
+        private readonly int refreshInterval;
 
         public ZmqService()
         {
-            primitiveQuoteService = new GoogleFinanceDataQuoteService();
+            primitiveQuoteService = new YahooFinancialDataService();
             subscribedTickerList = new List<string>();
             subscribedTickerList.AddRange(MarketDataSettings.StartupTickers);
+            refreshInterval = MarketDataSettings.ServerRefreshMillis;
 
             socketFactory = NetMQContext.Create();
         }
@@ -123,11 +125,11 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
                     foreach (var item in tickerInfos)
                     {
                         var responseString = JsonConvert.SerializeObject(item);
-                        pubSocket.SendMoreFrame(item.SecurityId).SendFrame(responseString);
-                        Console.WriteLine($"Published update for {item.SecurityId} at {asOf.ToString("hh:mm:ss")}");
+                        pubSocket.SendMoreFrame(item.Symbol).SendFrame(responseString);
+                        Console.WriteLine($"Published update for {item.Symbol} at {asOf.ToString("hh:mm:ss")}");
                     }
 
-                    Thread.Sleep(1000);
+                    Thread.Sleep(refreshInterval);
                 }
             }
         }

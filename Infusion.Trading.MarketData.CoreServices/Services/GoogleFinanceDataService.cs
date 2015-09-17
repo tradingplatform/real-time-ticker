@@ -5,12 +5,11 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Infusion.Trading.MarketData.CoreServices.Contracts;
 using Newtonsoft.Json;
-using System.Composition;
 using Infusion.Trading.MarketData.Models;
 
 namespace Infusion.Trading.MarketData.CoreServices.Services
 {
-    public class GoogleFinanceDataQuoteService : IQuoteService
+    public class GoogleFinanceDataService : IQuoteService
     {
         private const string EXCHANGE = "NASDAQ";
 
@@ -31,9 +30,9 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
 
             var result = new List<Quote>();
             var securityIdsAsString = string.Join(",", securityIds);
-            
+
             var queryUri = $"info?infotype=infoquoteall&q={EXCHANGE}:{securityIdsAsString}";
-            using (var client = new HttpClient {BaseAddress = baseUrl})
+            using (var client = new HttpClient { BaseAddress = baseUrl })
             {
                 var response = await client.GetStringAsync(queryUri).ConfigureAwait(false);
                 var deserializedRawList = (dynamic)JsonConvert.DeserializeObject(response.Substring(4));
@@ -45,17 +44,17 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
                 {
                     result.Add(new Quote
                     {
-                        SecurityId = quote.t,           // t = ticker
-                        Exchange = quote.e,             // e = exchange
-                        Price = (decimal)quote.l,       // l = list(?) price
-                        LastChange = (decimal)quote.c,  // c = change
-                        DayHigh = (decimal)quote.hi,    // hi = day high
-                        DayLow = (decimal)quote.lo,     // lo = day low
+                        Symbol = quote.t,           // t = ticker
+                        StockExchange = quote.e,             // e = exchange
+                        Ask = (decimal)quote.l,       // l = list(?) price
+                        Change = quote.c,  // c = change
+                        DaysHigh = (decimal)quote.hi,    // hi = day high
+                        DaysLow = (decimal)quote.lo,     // lo = day low
                         AsOf = asOf                     // how fresh?
                     });
                 }
             }
             return result;
-        } 
+        }
     }
 }
