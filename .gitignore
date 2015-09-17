@@ -50,3 +50,4 @@ Infusion.Trading.MarketData.ZmqServer/obj/
 MarketDataTestBench/obj/
 Infusion.Trading.MarketData.Client/bin/
 Infusion.Trading.MarketData.Client/obj/
+packages/
