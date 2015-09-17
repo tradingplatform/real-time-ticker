@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infusion.Trading.MarketData.Models", "Infusion.Trading.MarketData.Models\Infusion.Trading.MarketData.Models.csproj", "{2E11F705-7CAA-4E80-9099-3F042D9502CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infusion.Trading.MarketData.Services", "Infusion.Trading.MarketData.CoreServices\Infusion.Trading.MarketData.Services.csproj", "{1CA5C639-4470-42DE-8353-19477002E886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infusion.Trading.MarketData.Client", "Infusion.Trading.MarketData.Client\Infusion.Trading.MarketData.Client.csproj", "{A55CEB44-B0DE-4B1C-8C86-FC5734141AB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infusion.Trading.MarketData.ZmqServer", "Infusion.Trading.MarketData.ZmqServer\Infusion.Trading.MarketData.ZmqServer.csproj", "{EEF9E0E7-2B58-4216-8715-1B18DCF84C8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketDataTestBench", "MarketDataTestBench\MarketDataTestBench.csproj", "{9BCDAFFE-8426-4F0D-8EE2-227D11690377}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E11F705-7CAA-4E80-9099-3F042D9502CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E11F705-7CAA-4E80-9099-3F042D9502CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E11F705-7CAA-4E80-9099-3F042D9502CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E11F705-7CAA-4E80-9099-3F042D9502CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CA5C639-4470-42DE-8353-19477002E886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CA5C639-4470-42DE-8353-19477002E886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CA5C639-4470-42DE-8353-19477002E886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CA5C639-4470-42DE-8353-19477002E886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A55CEB44-B0DE-4B1C-8C86-FC5734141AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55CEB44-B0DE-4B1C-8C86-FC5734141AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55CEB44-B0DE-4B1C-8C86-FC5734141AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55CEB44-B0DE-4B1C-8C86-FC5734141AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF9E0E7-2B58-4216-8715-1B18DCF84C8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF9E0E7-2B58-4216-8715-1B18DCF84C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF9E0E7-2B58-4216-8715-1B18DCF84C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF9E0E7-2B58-4216-8715-1B18DCF84C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BCDAFFE-8426-4F0D-8EE2-227D11690377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BCDAFFE-8426-4F0D-8EE2-227D11690377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BCDAFFE-8426-4F0D-8EE2-227D11690377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BCDAFFE-8426-4F0D-8EE2-227D11690377}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
