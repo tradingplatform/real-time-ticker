@@ -1,9 +1,0 @@
-C:\GitHub\market-data-service\Infusion.Trading.MarketData.Models\bin\Debug\Infusion.Trading.MarketData.Models.dll
-C:\GitHub\market-data-service\Infusion.Trading.MarketData.Models\bin\Debug\Infusion.Trading.MarketData.Models.pdb
-C:\GitHub\market-data-service\Infusion.Trading.MarketData.Models\obj\Debug\Infusion.Trading.MarketData.Models.dll
-C:\GitHub\market-data-service\Infusion.Trading.MarketData.Models\obj\Debug\Infusion.Trading.MarketData.Models.pdb
-C:\GitHub\trade-platform\Infusion.Trading.MarketData.Models\bin\Debug\Infusion.Trading.MarketData.Models.dll
-C:\GitHub\trade-platform\Infusion.Trading.MarketData.Models\bin\Debug\Infusion.Trading.MarketData.Models.pdb
-C:\GitHub\trade-platform\Infusion.Trading.MarketData.Models\obj\Debug\Infusion.Trading.MarketData.Models.csprojResolveAssemblyReference.cache
-C:\GitHub\trade-platform\Infusion.Trading.MarketData.Models\obj\Debug\Infusion.Trading.MarketData.Models.dll
-C:\GitHub\trade-platform\Infusion.Trading.MarketData.Models\obj\Debug\Infusion.Trading.MarketData.Models.pdb
