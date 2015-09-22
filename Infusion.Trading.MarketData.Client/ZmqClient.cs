@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Infusion.Trading.MarketData.Models;
 using NetMQ;
 using NetMQ.Sockets;
@@ -14,7 +15,7 @@ namespace Infusion.Trading.MarketData.Client
         private readonly NetMQContext context;
         private readonly SubscriberSocket subSocket;
 
-        public event Action<IList<Quote>> HandleSubscriberUpdate;
+        public event Action<Quote> HandleSubscriberUpdate;
 
         public ZmqClient()
         {
@@ -52,8 +53,11 @@ namespace Infusion.Trading.MarketData.Client
 
         public void Start(params string[] tickerListToAdd)
         {
-            UpdateSubscriptions(tickerListToAdd);
-            PostSubscriptions();
+            Task.Factory.StartNew(() =>
+            {
+                UpdateSubscriptions(tickerListToAdd);
+                PostSubscribedUpdatesAndSignal();
+            });
         }
 
         public void StartConsole(params string[] tickerListToAdd)
@@ -124,7 +128,7 @@ namespace Infusion.Trading.MarketData.Client
 
                 if (messageReceived == "quit") break;
 
-                var result = JsonConvert.DeserializeObject<IList<Quote>>(messageReceived);
+                var result = JsonConvert.DeserializeObject<Quote>(messageReceived);
                 var evt = HandleSubscriberUpdate;
                 evt?.Invoke(result);
             }

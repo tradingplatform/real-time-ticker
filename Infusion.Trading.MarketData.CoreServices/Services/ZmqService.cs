@@ -94,7 +94,7 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
                             subscribedTickerList.Add(message);
                         }
 
-                        server.SendFrame($"Received subscription for {message}");
+                        server.SendFrame(message);
                         Thread.Sleep(100);
                     }
                 }
