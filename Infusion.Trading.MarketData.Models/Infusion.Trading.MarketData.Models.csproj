@@ -46,12 +46,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MarketDataSettings.cs" />
+    <Compile Include="NullableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\QueryDetail.cs" />
     <Compile Include="Quote.cs" />
     <Compile Include="Serialization\QuoteListWrapper.cs" />
     <Compile Include="Serialization\QuoteResponse.cs" />
     <Compile Include="Serialization\SingleOrArrayConverter.cs" />
+    <Compile Include="Serialization\WebSocketMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

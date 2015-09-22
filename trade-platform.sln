@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infusion.Trading.MarketData
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketDataTestBench", "MarketDataTestBench\MarketDataTestBench.csproj", "{9BCDAFFE-8426-4F0D-8EE2-227D11690377}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockTickerTestBench", "StockTickerTestBench\StockTickerTestBench.csproj", "{0BE88555-9879-4DAE-B3B0-BD8BDF52E95C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarketDataFleck", "MarketDataFleck\MarketDataFleck.csproj", "{48710045-D748-4276-AA95-35AB19D216FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{9BCDAFFE-8426-4F0D-8EE2-227D11690377}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BCDAFFE-8426-4F0D-8EE2-227D11690377}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BCDAFFE-8426-4F0D-8EE2-227D11690377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BE88555-9879-4DAE-B3B0-BD8BDF52E95C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE88555-9879-4DAE-B3B0-BD8BDF52E95C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE88555-9879-4DAE-B3B0-BD8BDF52E95C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE88555-9879-4DAE-B3B0-BD8BDF52E95C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48710045-D748-4276-AA95-35AB19D216FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48710045-D748-4276-AA95-35AB19D216FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48710045-D748-4276-AA95-35AB19D216FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48710045-D748-4276-AA95-35AB19D216FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

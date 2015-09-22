@@ -4,6 +4,7 @@ using System.Linq;
 using Infusion.Trading.MarketData.Models;
 using NetMQ;
 using NetMQ.Sockets;
+using Newtonsoft.Json;
 
 namespace Infusion.Trading.MarketData.Client
 {
@@ -12,6 +13,8 @@ namespace Infusion.Trading.MarketData.Client
         private readonly List<string> tickerList = new List<string>();
         private readonly NetMQContext context;
         private readonly SubscriberSocket subSocket;
+
+        public event Action<IList<Quote>> HandleSubscriberUpdate;
 
         public ZmqClient()
         {
@@ -22,7 +25,17 @@ namespace Infusion.Trading.MarketData.Client
             subSocket.Connect(MarketDataSettings.RealTimeUpdateServerAddress);
         }
 
-        public string GetQuoteInfo(params string[] tickerListToQuote)
+        public IList<Quote> GetQuoteInfo(params string[] tickerListToQuote)
+        {
+            var response = GetQuoteInfoRaw(tickerListToQuote);
+
+            if (string.IsNullOrEmpty(response)) return new List<Quote>();
+
+            var result = JsonConvert.DeserializeObject<IList<Quote>>(response);
+            return result;
+        }
+
+        public string GetQuoteInfoRaw(params string[] tickerListToQuote)
         {
             if (tickerListToQuote == null || !tickerListToQuote.Any()) return string.Empty;
 
@@ -40,7 +53,13 @@ namespace Infusion.Trading.MarketData.Client
         public void Start(params string[] tickerListToAdd)
         {
             UpdateSubscriptions(tickerListToAdd);
-            ListenForUpdates();
+            PostSubscriptions();
+        }
+
+        public void StartConsole(params string[] tickerListToAdd)
+        {
+            UpdateSubscriptions(tickerListToAdd);
+            PostSubscribedUpdatesToConsole();
         }
 
         public void UpdateSubscriptions(params string[] tickerListToAdd)
@@ -86,18 +105,43 @@ namespace Infusion.Trading.MarketData.Client
             tickerList.Clear();
         }
 
-        private void ListenForUpdates()
+        private void PostSubscriptions()
         {
             foreach (var ticker in tickerList)
             {
                 subSocket.Subscribe(ticker);
             }
+        }
+
+        private void PostSubscribedUpdatesAndSignal()
+        {
+            PostSubscriptions();
+
+            while (true)
+            {
+                var messageTopicReceived = subSocket.ReceiveFrameString();
+                var messageReceived = subSocket.ReceiveFrameString();
+
+                if (messageReceived == "quit") break;
+
+                var result = JsonConvert.DeserializeObject<IList<Quote>>(messageReceived);
+                var evt = HandleSubscriberUpdate;
+                evt?.Invoke(result);
+            }
+        }
+
+        private void PostSubscribedUpdatesToConsole()
+        {
+            PostSubscriptions();
 
             Console.WriteLine("Subscriber socket connecting...");
             while (true)
             {
-                string messageTopicReceived = subSocket.ReceiveFrameString();
-                string messageReceived = subSocket.ReceiveFrameString();
+                var messageTopicReceived = subSocket.ReceiveFrameString();
+                var messageReceived = subSocket.ReceiveFrameString();
+
+                if (messageReceived == "quit") break;
+
                 Console.WriteLine(messageReceived);
                 Console.WriteLine();
                 Console.WriteLine();

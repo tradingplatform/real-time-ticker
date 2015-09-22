@@ -22,13 +22,13 @@ namespace MarketDataTestBench
             {
                 if (args[0] == "snapshot")
                 {
-                    var response = client.GetQuoteInfo(args.Skip(1).ToArray());
+                    var response = client.GetQuoteInfoRaw(args.Skip(1).ToArray());
                     Console.WriteLine(response);
                     Console.WriteLine();
                     return;
                 }
 
-                client.Start(args);
+                client.StartConsole(args);
             }
         }
     }

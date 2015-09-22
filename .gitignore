@@ -51,3 +51,7 @@ MarketDataTestBench/obj/
 Infusion.Trading.MarketData.Client/bin/
 Infusion.Trading.MarketData.Client/obj/
 packages/
+StockTickerTestBench/obj/
+MarketDataFleck/obj/
+MarketDataFleck/bin/
+StockTickerTestBench/bin/

@@ -60,7 +60,7 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
                         var response = primitiveQuoteService.GetQuotes(securityIds);
 
                         var responseString = JsonConvert.SerializeObject(response);
-                        server.SendFrame($"Response sent:\r\n{responseString}");
+                        server.SendFrame(responseString);
                         Thread.Sleep(100);
                     }
                 }

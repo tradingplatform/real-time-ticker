@@ -9,15 +9,22 @@ namespace Infusion.Trading.MarketData.Models
         public static string TickerWatchServerAddress { get; private set; }
         public static string RealTimeUpdateServerAddress { get; private set; }
         public static string SnapshotDataServerAddress { get; private set; }
+        public static string FleckServerAddress { get; set; }
+
         public static IList<string> StartupTickers { get; private set; }
         public static int ServerRefreshMillis { get; set; }
+
+        public static string OverlayNotifyHost { get; set; }
+
 
         static MarketDataSettings()
         {
             TickerWatchServerAddress = ConfigurationManager.AppSettings["tickerWatchServer"];
             RealTimeUpdateServerAddress = ConfigurationManager.AppSettings["pubSubServer"];
             SnapshotDataServerAddress = ConfigurationManager.AppSettings["snapShotServer"];
-            
+            OverlayNotifyHost = ConfigurationManager.AppSettings["overlayhost"] ?? "http://10.1.103.60/";
+            FleckServerAddress = ConfigurationManager.AppSettings["fleckServer"] ?? "ws://10.1.103.60/";
+
             var tickers = ConfigurationManager.AppSettings["startupTickers"] ?? string.Empty;
             var tickerList = tickers.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
             StartupTickers = tickerList;
