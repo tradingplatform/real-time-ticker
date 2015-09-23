@@ -12,12 +12,12 @@ using Infusion.Trading.MarketData.Models.Serialization;
 
 namespace Infusion.Trading.MarketData.Client
 {
-    public class ChumblyClient
+    public class ChumbyClient
     {
         private readonly ConcurrentQueue<Quote> updateQueue = new ConcurrentQueue<Quote>();
         private readonly AutoResetEvent processQueueHandle = new AutoResetEvent(false);
 
-        public ChumblyClient()
+        public ChumbyClient()
         {
             Task.Factory.StartNew(() =>
             {

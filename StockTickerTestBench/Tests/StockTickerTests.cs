@@ -17,7 +17,7 @@ namespace StockTickerTestBench.Tests
         public void ShouldPushQuoteMessages()
         {
             var zmqClient = new ZmqClient();
-            var client = new ChumblyClient();
+            var client = new ChumbyClient();
 
             for (var i = 0; i < 50; i++)
             {

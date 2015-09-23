@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChumblyClient.cs" />
+    <Compile Include="ChumbyClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\ChumblyClientTests.cs" />
     <Compile Include="ZmqClient.cs" />

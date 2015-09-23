@@ -14,7 +14,7 @@ namespace StockTickerTestBench
         static void Main(string[] args)
         {
             var zmqClient = new ZmqClient();
-            var client = new ChumblyClient();
+            var client = new ChumbyClient();
 
             while (true)
             {
