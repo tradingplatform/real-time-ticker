@@ -1,2 +1,2 @@
-cd ..\Infusion.Trading.MarketData.ZmqServer\bin\Debug
-Infusion.Trading.MarketData.ZmqServer.exe
+cd ..\Infusion.Trading.MarketData.Server\bin\Debug
+Infusion.Trading.MarketData.Server.exe
