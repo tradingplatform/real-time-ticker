@@ -10,17 +10,20 @@ using Newtonsoft.Json;
 
 namespace Infusion.Trading.MarketData.CoreServices.Services
 {
-    public class ZmqService : IDisposable
+    public class ZmqService : IDisposable, IZmqService
     {
+        private string Id = Guid.NewGuid().ToString();
         private readonly IQuoteService primitiveQuoteService;
-        private readonly List<string> subscribedTickerList;
+        private static readonly List<string> subscribedTickerList = new List<string>();
         private readonly NetMQContext socketFactory;
         private readonly int refreshInterval;
 
-        public ZmqService()
+        public event Action<IList<Quote>> HandleTickerInfoPublish;
+
+        public ZmqService(YahooFinancialDataService primitiveQuoteService)
         {
-            primitiveQuoteService = new YahooFinancialDataService();
-            subscribedTickerList = new List<string>();
+            this.primitiveQuoteService = primitiveQuoteService;
+            
             subscribedTickerList.AddRange(MarketDataSettings.StartupTickers);
             refreshInterval = MarketDataSettings.ServerRefreshMillis;
 
@@ -29,9 +32,23 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
 
         public void Start()
         {
-            ListenForSnapshotRequest();
-            ListenForSubscriptions();
-            PublishTickerInfo();
+            Task.Factory.StartNew(() =>
+            {
+                ListenForSnapshotRequest();
+                ListenForSubscriptions();
+                PublishTickerInfo();
+            });
+        }
+
+        public void SubscribeTicker(string ticker)
+        {
+            lock (subscribedTickerList)
+            {
+                if (!subscribedTickerList.Contains(ticker))
+                {
+                    subscribedTickerList.Add(ticker);
+                }
+            }
         }
 
         private void ListenForSnapshotRequest()
@@ -89,10 +106,7 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
 
                         // processing the request
                         Console.WriteLine($"Subscription requested for {message}");
-                        if (!subscribedTickerList.Contains(message))
-                        {
-                            subscribedTickerList.Add(message);
-                        }
+                        SubscribeTicker(message);
 
                         server.SendFrame(message);
                         Thread.Sleep(100);
@@ -114,12 +128,20 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
                     // processing the request
                     Thread.Sleep(100);
 
-                    var tickerInfos = primitiveQuoteService.GetQuotes(subscribedTickerList.ToArray());
+                    IList<Quote> tickerInfos = null;
+
+                    lock (subscribedTickerList)
+                    {
+                        tickerInfos = primitiveQuoteService.GetQuotes(subscribedTickerList.ToArray());
+                    }
+
                     if (!tickerInfos.Any())
                     {
                         Thread.Sleep(100);
                         continue;
                     }
+
+                    HandleTickerInfoPublish?.Invoke(tickerInfos);
 
                     var asOf = DateTime.Now;
                     foreach (var item in tickerInfos)

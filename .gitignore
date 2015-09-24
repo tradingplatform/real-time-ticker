@@ -55,3 +55,5 @@ StockTickerTestBench/obj/
 MarketDataFleck/obj/
 MarketDataFleck/bin/
 StockTickerTestBench/bin/
+Infusion.Trading.MarketData.Server/bin/
+Infusion.Trading.MarketData.Server/obj/

@@ -16,7 +16,7 @@ namespace StockTickerTestBench
             var zmqClient = new ZmqClient();
             var client = new ChumbyClient();
 
-            while (true)
+            for (;;)
             {
                 var quotes = zmqClient.GetQuoteInfo(MarketDataSettings.StartupTickers.ToArray());
                 client.SendTickerUpdates(quotes.ToArray());

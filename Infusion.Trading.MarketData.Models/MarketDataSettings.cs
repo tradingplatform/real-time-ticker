@@ -13,6 +13,8 @@ namespace Infusion.Trading.MarketData.Models
         public static string FleckServerHost { get; set; }
         public static int FleckServerPort { get; set; }
 
+        public static int RestServicePort { get; set; }
+
         public static IList<string> StartupTickers { get; private set; }
         public static int ServerRefreshMillis { get; set; }
 
@@ -40,6 +42,10 @@ namespace Infusion.Trading.MarketData.Models
             var refreshInterval = 100;
             int.TryParse(serverRefreshValue, out refreshInterval);
             ServerRefreshMillis = refreshInterval;
+
+            var restPort = 0;
+            int.TryParse(ConfigurationManager.AppSettings["restServicePort"], out restPort);
+            RestServicePort = restPort;
         }
     }
 }

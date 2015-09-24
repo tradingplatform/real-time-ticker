@@ -59,6 +59,7 @@ namespace MarketDataFleck
                     zmqClient.UpdateSubscriptions(tickerList);
                     
                     // not going to send a response back yet... only when we get an update from zmq server.
+                    var s = string.Format("{0}", tickerList[0]);
                 };
 
                 isConnected = true;
