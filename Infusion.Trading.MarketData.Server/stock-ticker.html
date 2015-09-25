@@ -84,7 +84,8 @@
 <!-- the main area where the tickers will scroll... -->
 <div id="tickerbanner"></div>
 
-<!--<table style="padding: 0px; background: yellow" cellpadding="0px" cellspacing="0px">
+<!--
+<table style="padding: 0px; background: yellow" cellpadding="0px" cellspacing="0px">
     <tr>
         <th rowspan="2"><span style="font-size: 20pt; font-family: verdana; "><b>MSFT&nbsp;&nbsp;</b></span></th>
         <td><span style="font-size: 8pt; font-family: verdana; ">Ask: 123.456&nbsp;&nbsp;</span></td>
@@ -94,7 +95,73 @@
         <td><span style="font-size: 8pt; font-family: verdana; ">Bid: 123.456&nbsp;&nbsp;</span></td>
         <td><span style="font-size: 8pt; font-family: verdana; ">High: 123.456</span></td>
     </tr>
-</table>-->
+</table>
+-->
+
+<!-- this is the CSS for scrolling... use it for testing...
+
+<style style="text/css">
+.example1 {
+ height: 50px;	
+ overflow: hidden;
+ position: relative;
+}
+.example1 table {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);	
+ transform:translateX(100%);
+ /* Apply animation to this element */	
+ -moz-animation: example1 15s linear infinite;
+ -webkit-animation: example1 15s linear infinite;
+ animation: example1 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes example1 {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%); 
+ }
+}
+</style>
+
+<div class="example1">
+<table style="padding: 0px; background: yellow" cellpadding="0px" cellspacing="0px">
+    <tr>
+        <th rowspan="2"><span style="font-size: 20pt; font-family: verdana; "><b>MSFT&nbsp;&nbsp;</b></span></th>
+        <td><span style="font-size: 8pt; font-family: verdana; ">Ask: 123.456&nbsp;&nbsp;</span></td>
+        <td><span style="font-size: 8pt; font-family: verdana; ">Low: 123.456</span></td>
+    </tr>
+    <tr>
+        <td><span style="font-size: 8pt; font-family: verdana; ">Bid: 123.456&nbsp;&nbsp;</span></td>
+        <td><span style="font-size: 8pt; font-family: verdana; ">High: 123.456</span></td>
+    </tr>
+</table>
+
+</div>
+
+
+-->
 
 
 </body>
