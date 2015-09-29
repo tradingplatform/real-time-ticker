@@ -107,7 +107,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="stock-ticker.html" />
+    <Content Include="html-sample\stock-ticker-final.html" />
+    <Content Include="html-sample\jquery.webticker.min.js" />
+    <Content Include="html-sample\webticker-assets\left.png" />
+    <Content Include="html-sample\webticker-assets\right.png" />
+    <Content Include="html-sample\webticker-assets\webticker.css" />
+    <Content Include="html-sample\webticker.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

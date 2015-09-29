@@ -40,6 +40,7 @@ namespace Infusion.Trading.MarketData.CoreServices.Services
                     deserializedResponse.query.results.quote.Select(q =>
                     {
                         q.AsOf = asOf;
+                        q.LastTradeDateAsString = q.LastTradeDate?.ToString("MM/dd/yyyy") + " " + q.LastTradeTime;
                         return q;
                     }));
             }

@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+    <meta charset="utf-8"/>
+    <title></title>
+    
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.webticker.min.js"></script>
+    <link rel="stylesheet" href="webticker-assets/webticker.css" type="text/css" media="screen">
+
+    <style>
+        body {
+            color: white;
+            background: black;
+        }
+
+         .Stocks {
+             display: inline;
+             vertical-align: middle;
+             text-align: center;
+             color: white;
+             font-size: 16px;
+             font-family: "Roboto", Helvetica;
+         }
+
+        .Stocks b {
+            font-weight: 300;
+        }
+        .Stocks i {
+            font-style: normal;
+        }
+
+        .StocksLabel {
+            font-size: 11px
+        }
+
+        .StocksName,
+        .StocksLastUpdated {
+            font-size: 0.8em;
+        }
+
+        .StocksLastUpdatedValue {
+            color: #88bd0a;
+            font-size: 0.8em;
+        }
+
+        .Stocks span {
+            white-space: nowrap;
+            display: inline-block;
+            padding: 0 5px;
+            color: white;
+        }
+
+        .StocksSymbol,
+        .StocksMarketCapitalization {
+             color: #88bd0a;
+        }
+
+        .RedStocksStat {
+            color: red;
+            font-size: 14px;
+            vertical-align: bottom;
+        }
+
+        .StocksStat {
+            color: #88bd0a;
+            font-size: 14px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var start = function startConnection() {
+            var wsConnection = window.WebSocket || window.MozWebSocket;
+            var form = document.getElementById('sendForm');
+            var input = document.getElementById('sendText');
+
+            // create a new websocket and connect
+            window.ws = new wsConnection('ws://10.1.102.72:2222/'); // JK: we need to inject this somehow...
+
+            // when data is comming from the server, this metod is called
+            ws.onmessage = function (evt) {
+                // JK: evt.data is JSON content; needs to be deserialized and put into a
+                // stock ticker div
+                var quote = JSON.parse(evt.data);
+                buildTickerHtml(quote);
+            };
+
+            // when the connection is established, this method is called
+            ws.onopen = function () {
+                // JK: can we log this?
+            };
+
+            // when the connection is closed, this method is called
+            ws.onclose = function () {
+                // JK: can we log this?
+            }
+
+            $("#webticker").webTicker();
+        }
+
+        window.onload = start;
+        //$(function() {
+        //    $("#webticker").webTicker();
+        //});
+        
+        function addCommas(nStr) {
+            nStr += '';
+            x = nStr.split('.');
+            x1 = x[0];
+            x2 = x.length > 1 ? '.' + x[1] : '';
+            var rgx = /(\d+)(\d{3})/;
+            while (rgx.test(x1)) {
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+            }
+            return x1 + x2;
+        }
+
+        function getChangeLabel(nStr) {
+            var n = nStr.indexOf("-");
+            if (n > -1) {
+                return "RedStocksStat";
+            } else {
+                return "StocksStat";
+            }
+
+        }
+
+        // generate the ticker info
+        function buildTickerHtml(quote) {
+            var tickerId = "#" + quote.Symbol;
+            var tickerItem = $(tickerId);
+
+            var updateElement = "<div class='Stocks'>" +
+                "<span class='StocksSymbol'>" +
+                "<b class='StocksSymbol'><i>" + quote.Symbol + "</i>:<i class='StocksSymbol'>" + quote.StockExchange + "</i></b>" +
+                "</span>" +
+                "<span class='StocksPrice'><b class='StocksLabel'>Last Price</b> <b class='StocksStat'><i>" + quote.Ask + "</i></b></span>" +
+                "<span class='StocksChange'><b class='StocksLabel'>Change</b> <b class='" + getChangeLabel(quote.Change) + "'><i>" + quote.Change + "</i></b>" +
+                //"<b class='Stat'>(<i>" + quote.Change_Percentage + "</i>)</b></span>" +
+                "<span class='StocksVolume'><b class='StocksLabel'>Volume</b> <b class='StocksStat'>" + addCommas(quote.Volume) + "</b></span>" +
+                "<span class='StocksMarketCapitalization'><b class='StocksLabel'>Mkt Cap</b> <b class='StocksStat'><i>" + addCommas(quote.MarketCapitalization) + "</i></b></span>" +
+                "<span class='StocksLastUpdated'><b class='StocksLastUpdated'>Last Trade</b> <b class='StocksLastUpdatedValue'><i>" + quote.LastTradeDateAsString + "</i></b></span>" +
+                "</div>";
+
+            if (!tickerItem.length) {
+                var newElement = "<li data-update='" + quote.Symbol + "'>" + updateElement + "</li>";
+                $("#webticker").webTicker('update', newElement, 'swap');
+            } 
+            
+            if (tickerItem.length) {
+                tickerItem.innerHTML(updateElement);
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+<ul id="webticker">
+    <!--<li id='blank'>
+        <div class="Stocks">
+            <span class="StocksSymbol">
+                <b class="StocksStat"><i data-replace='Symbol'>PWR</i>:<i data-replace='StockExchange'>NYSE</i></b>
+                <b class="StocksLabel">( <i data-replace='Name'>Quanta Services</i> )</b>
+            </span>
+            <span class="StocksPrice"><b class="Label">Last Price</b> <b class="Stat">$<i data-replace='BidRealtime'></i></b></span>
+            <span class="StocksChange"><b class="Label">Change</b> <b class="Stat"><i data-replace='Change'></i></b> <b class="Stat">(<i data-replace='ChangeinPercent'></i>)</b></span>
+            <span class="StocksVolume"><b class="Label">Volume</b> <b class="Stat" data-replace='Volume'></b></span>
+            <span class="StocksMarketCapitalization"><b class="Label">Mkt Cap</b> <b class="Stat">$<i data-replace="MarketCapitalization"></i></b></span>
+            <span class="StocksLastUpdated"><b class="Label">Last Trade</b> <b class="Stat"><i data-replace='LastTradeDate'></i> <i data-replace="LastTradeTime"></i> </b></span>
+        </div>
+    </li>-->
+</ul>
+</body>
+</html>

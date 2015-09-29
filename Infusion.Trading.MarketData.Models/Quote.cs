@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace Infusion.Trading.MarketData.Models
 {
@@ -88,5 +89,6 @@ namespace Infusion.Trading.MarketData.Models
         public string StockExchange { get; set; }
         public decimal? DividendYield { get; set; }
         public string PercentChange { get; set; }
+        public string LastTradeDateAsString { get; set; }
     }
 }
