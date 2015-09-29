@@ -107,8 +107,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="html-sample\jquery.webticker.js" />
     <Content Include="html-sample\stock-ticker-final.html" />
     <Content Include="html-sample\jquery.webticker.min.js" />
+    <Content Include="html-sample\stock-ticker-framed.html" />
     <Content Include="html-sample\webticker-assets\left.png" />
     <Content Include="html-sample\webticker-assets\right.png" />
     <Content Include="html-sample\webticker-assets\webticker.css" />

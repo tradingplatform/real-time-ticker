@@ -7,7 +7,7 @@
     <title></title>
     
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.webticker.min.js"></script>
+    <script type="text/javascript" src="jquery.webticker.js"></script>
     <link rel="stylesheet" href="webticker-assets/webticker.css" type="text/css" media="screen">
 
     <style>
@@ -98,6 +98,7 @@
             }
 
             $("#webticker").webTicker();
+            //$("#webticker").webTicker().width("100%");
         }
 
         window.onload = start;
@@ -160,6 +161,7 @@
 
 <body>
 <ul id="webticker">
+    <li id ="blank"></li>
     <!--<li id='blank'>
         <div class="Stocks">
             <span class="StocksSymbol">
