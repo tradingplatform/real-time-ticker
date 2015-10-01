@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Infusion.Trading.MarketData.Models;
+using Infusion.Trading.MarketData.Models.Util;
 using NUnit.Framework;
 
 namespace Infusion.Trading.MarketData.Client.Tests

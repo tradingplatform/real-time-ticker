@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Infusion.Trading.MarketData.Models;
+using Infusion.Trading.MarketData.Models.Util;
 using NetMQ;
 using NetMQ.Sockets;
 using Newtonsoft.Json;

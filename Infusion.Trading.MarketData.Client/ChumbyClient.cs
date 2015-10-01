@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Infusion.Trading.MarketData.Models;
 using Infusion.Trading.MarketData.Models.Serialization;
+using Infusion.Trading.MarketData.Models.Util;
 
 namespace Infusion.Trading.MarketData.Client
 {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Fleck;
 using Infusion.Trading.MarketData.CoreServices.Contracts;
 using Infusion.Trading.MarketData.Models;
+using Infusion.Trading.MarketData.Models.Util;
 using Newtonsoft.Json;
 
 namespace Infusion.Trading.MarketData.CoreServices.Services

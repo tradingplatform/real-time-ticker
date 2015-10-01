@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Infusion.Trading.MarketData.Client;
 using Infusion.Trading.MarketData.Models;
+using Infusion.Trading.MarketData.Models.Util;
 
 namespace StockTickerTestBench
 {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 
-namespace Infusion.Trading.MarketData.Models
+namespace Infusion.Trading.MarketData.Models.Util
 {
     public static class MarketDataSettings
     {

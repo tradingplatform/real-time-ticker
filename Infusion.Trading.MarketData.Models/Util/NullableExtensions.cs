@@ -1,4 +1,4 @@
-namespace Infusion.Trading.MarketData.Models
+namespace Infusion.Trading.MarketData.Models.Util
 {
     public static class NullableExtensions
     {
