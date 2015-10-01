@@ -1,0 +1,25 @@
+{
+  "OrderId": "OrderId022a24ec-d45b-464c-af09-f98c71a6e240",
+  "Client": {
+    "ClientId": "ClientId1035bc2d-dd61-4469-b97c-5aa8cb780494",
+    "Name": "Namec9b67984-e036-4c78-9a3c-306bbbbe20da"
+  },
+  "Trader": {
+    "TraderId": "TraderId96d40ea6-a4e3-4a77-9459-20786ae00ad3",
+    "TraderName": "TraderName2ff8b4ce-d115-4337-b5ff-34b93cdcea28"
+  },
+  "ExchangeOrderId": "ExchangeOrderIdac82c86e-e718-4cc7-90ee-53bb97821b7f",
+  "ExchangeCreateTime": "2016-05-16T00:05:09.1316716",
+  "ExchangeLastChangeTime": "2014-07-03T20:37:44.8150103",
+  "AsOf": "2016-08-14T00:57:09.0208079",
+  "OrderType": "Limit",
+  "Side": "Buy",
+  "Quantity": 95,
+  "Price": 202.0,
+  "StopPrice": 21.0,
+  "Status": "Pending",
+  "OrderDurationType": "Day",
+  "OrderFills": null,
+  "SecurityType": "Stock",
+  "TransactionType": "New"
+}

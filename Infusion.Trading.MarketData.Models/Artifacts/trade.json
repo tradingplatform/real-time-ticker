@@ -1,0 +1,36 @@
+{
+  "TradeId": "TradeId457f4eb2-c332-4eb3-bdc4-5dd325823972",
+  "TradeTime": "2016-10-30T09:54:33.6363301",
+  "Order": {
+    "OrderId": "OrderId79ff707f-b879-4fd2-99c5-79a971c097eb",
+    "Client": null,
+    "Trader": null,
+    "ExchangeOrderId": "ExchangeOrderId29a4e9fe-e3f6-4011-b2be-f8586ccf90e9",
+    "ExchangeCreateTime": "2016-10-30T09:54:33.6363301",
+    "ExchangeLastChangeTime": "2017-02-18T00:28:01.2190334",
+    "AsOf": "2016-12-25T18:54:00.8093265",
+    "OrderType": "Limit",
+    "Side": "Buy",
+    "Quantity": 87,
+    "Price": 214.0,
+    "StopPrice": 4.0,
+    "Status": "Pending",
+    "OrderDurationType": "Day",
+    "OrderFills": null,
+    "SecurityType": "Stock",
+    "TransactionType": "New"
+  },
+  "Product": {
+    "ProductType": "Stock",
+    "ProducctName": "ProducctNamee0721d3b-70d5-4675-91ae-733d9c889c0f",
+    "LotSize": 87,
+    "TickSize": 214,
+    "Series": "Seriesef94354f-ed6f-434c-95a9-288baad69429",
+    "StrikePrice": 4.0,
+    "OptionType": "Put"
+  },
+  "FillPrice": 87.0,
+  "FillQuantity": 214,
+  "Side": "Buy",
+  "OrderType": "Limit"
+}
